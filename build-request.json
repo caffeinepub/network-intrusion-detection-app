@@ -1,0 +1,87 @@
+{
+  "kind": "build_request",
+  "title": "Convert web app to mobile-friendly app layout",
+  "projectName": "NetGuard IDS",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Redesign the frontend layout and navigation to be mobile-first and app-like: replace the sticky top navigation bar with a bottom tab bar (Dashboard, Analysis, History, Alerts), use full-viewport-height pages with no horizontal overflow, and ensure all touch targets are at least 44px tall for comfortable tap interaction.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "convert to app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A bottom tab bar with icons and labels is visible on all authenticated pages (Dashboard, Traffic Analysis, Detection History, Alerts)",
+        "The top navigation bar (Layout.tsx / Navigation.tsx) is replaced or hidden in favor of the bottom tab bar",
+        "Each tab navigates to its corresponding page without full page reload",
+        "The Alerts tab shows an unread badge count when there are active alerts",
+        "All pages fill the full viewport height and scroll vertically without horizontal overflow",
+        "Touch targets (buttons, tabs, list rows) are at minimum 44px in height",
+        "The app renders correctly on a 375px wide screen (iPhone SE baseline)"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update the Dashboard, Traffic Analysis, Detection History, and Alerts pages to use a card-stacked, single-column mobile layout. Remove multi-column grid layouts and replace them with vertically stacked full-width cards. Add a sticky page header with the current page title and a user avatar/logout icon in the top-right corner.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "convert to app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All stat cards on the Dashboard stack vertically in a single column on screens narrower than 640px",
+        "The RecentEventsFeed and AlertsPanel display as full-width scrollable lists",
+        "The TrafficInputForm fields stack vertically and use full-width inputs",
+        "The DetectionHistoryTable scrolls horizontally only if needed, or collapses columns into a card-per-row layout on small screens",
+        "Each page has a sticky top header bar showing the page title and a logout/profile icon",
+        "No content is cut off or requires horizontal scrolling on a 375px wide viewport"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update the Login page to resemble a mobile app splash/onboarding screen: center the logo and app name vertically in the full viewport, display a short tagline, and show the 'Sign In with Internet Identity' button as a prominent full-width call-to-action at the bottom of the screen.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "convert to app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Login page fills the full viewport height",
+        "The logo and app name are vertically centered",
+        "A short tagline is visible below the app name",
+        "The Sign In button spans nearly full width (max ~320px) and is positioned in the lower portion of the screen",
+        "The dark cybersecurity theme is preserved on the login screen"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "Preserve all existing backend logic and data models in backend/main.mo",
+    "Maintain the existing dark cybersecurity-themed design system defined in frontend/src/index.css and frontend/tailwind.config.js"
+  ],
+  "nonGoals": [
+    "Building a native Android or iOS application",
+    "Integrating Weka ML model or Android-specific APIs",
+    "Adding push notifications via native mobile OS APIs",
+    "SQLite or any external database integration",
+    "Changing the backend classification logic or detection history storage"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

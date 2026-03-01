@@ -1,0 +1,124 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Convert web app to mobile-friendly app layout",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Redesign frontend layout to be mobile-first with bottom tab navigation",
+      "acceptanceCriteria": [
+        "A bottom tab bar with icons and labels is visible on all authenticated pages (Dashboard, Traffic Analysis, Detection History, Alerts)",
+        "The top navigation bar (Layout.tsx / Navigation.tsx) is replaced or hidden in favor of the bottom tab bar",
+        "Each tab navigates to its corresponding page without full page reload",
+        "The Alerts tab shows an unread badge count when there are active alerts",
+        "All pages fill the full viewport height and scroll vertically without horizontal overflow",
+        "Touch targets (buttons, tabs, list rows) are at minimum 44px in height",
+        "The app renders correctly on a 375px wide screen (iPhone SE baseline)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BottomTabBar.tsx",
+          "operation": "create",
+          "description": "Create a mobile-first bottom tab navigation component with four tabs (Dashboard, Analysis, History, Alerts). Each tab displays an icon, label, and active state styling. The Alerts tab includes a dynamic unread badge count pulled from AlertContext. Use React Router's Link for navigation and ensure all touch targets are minimum 44px tall. Position the tab bar fixed at the bottom with safe-area-inset support."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Replace or conditionally hide the Navigation component on mobile viewports (< 640px). Integrate the new BottomTabBar component and ensure it appears on all authenticated routes. Add full viewport height container styling (min-h-screen) and configure the content area to account for bottom tab bar height. Remove horizontal overflow and ensure vertical scrolling only."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Hide the existing sticky top navigation bar on mobile viewports (< 640px) using responsive CSS classes (e.g., hidden sm:flex). Preserve desktop navigation functionality for larger screens."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add mobile-first utility classes and global styles: enforce no horizontal overflow on body and root elements, add safe-area-inset CSS variables for notched devices, define minimum touch target height utilities (min-h-[44px]), and ensure full viewport height containers account for bottom navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Update all main pages to use single-column mobile card layout with sticky headers",
+      "acceptanceCriteria": [
+        "All stat cards on the Dashboard stack vertically in a single column on screens narrower than 640px",
+        "The RecentEventsFeed and AlertsPanel display as full-width scrollable lists",
+        "The TrafficInputForm fields stack vertically and use full-width inputs",
+        "The DetectionHistoryTable scrolls horizontally only if needed, or collapses columns into a card-per-row layout on small screens",
+        "Each page has a sticky top header bar showing the page title and a logout/profile icon",
+        "No content is cut off or requires horizontal scrolling on a 375px wide viewport"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MobilePageHeader.tsx",
+          "operation": "create",
+          "description": "Create a reusable sticky top header component that displays the current page title on the left and a user avatar/logout button on the right. The header should be fixed at the top, styled consistently with the cybersecurity theme, and ensure touch targets are minimum 44px tall. Include profile name display and logout functionality using useInternetIdentity."
+        },
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Integrate MobilePageHeader at the top. Update StatisticsCards to stack in a single column on mobile (< 640px) by applying responsive grid classes (grid-cols-1 sm:grid-cols-2 lg:grid-cols-4). Ensure RecentEventsFeed and AlertsPanel render as full-width scrollable lists with proper spacing. Add padding at the bottom to account for the bottom tab bar height."
+        },
+        {
+          "path": "frontend/src/pages/TrafficAnalysis.tsx",
+          "operation": "modify",
+          "description": "Integrate MobilePageHeader at the top. Update TrafficInputForm and ClassificationResult to use full-width single-column layout on mobile. Add padding at the bottom for the bottom tab bar."
+        },
+        {
+          "path": "frontend/src/pages/DetectionHistory.tsx",
+          "operation": "modify",
+          "description": "Integrate MobilePageHeader at the top. Update HistoryFilters to stack vertically on mobile. Modify DetectionHistoryTable to use a card-per-row layout on small screens (< 640px) instead of a traditional table, showing key fields stacked vertically within each card. Add padding at the bottom for the bottom tab bar."
+        },
+        {
+          "path": "frontend/src/pages/Alerts.tsx",
+          "operation": "modify",
+          "description": "Integrate MobilePageHeader at the top. Ensure all alert cards stack vertically as full-width elements on mobile. Add padding at the bottom for the bottom tab bar."
+        },
+        {
+          "path": "frontend/src/components/StatisticsCards.tsx",
+          "operation": "modify",
+          "description": "Update the grid layout to use responsive Tailwind classes (grid-cols-1 sm:grid-cols-2 lg:grid-cols-4) ensuring cards stack vertically on screens < 640px. Ensure each card has appropriate spacing and full-width on mobile."
+        },
+        {
+          "path": "frontend/src/components/TrafficInputForm.tsx",
+          "operation": "modify",
+          "description": "Update form field layout to stack vertically as full-width inputs on mobile viewports. Ensure all input fields, dropdowns, and buttons use full width (w-full) and minimum 44px height for touch targets. Add responsive padding and spacing."
+        },
+        {
+          "path": "frontend/src/components/DetectionHistoryTable.tsx",
+          "operation": "modify",
+          "description": "Implement a responsive card-based layout for mobile screens (< 640px) where each DetectionEvent renders as a stacked card showing timestamp, traffic summary, attack type badge, and risk badge vertically. Preserve the table layout for larger screens. Ensure no horizontal overflow on 375px viewports."
+        },
+        {
+          "path": "frontend/src/components/RecentEventsFeed.tsx",
+          "operation": "modify",
+          "description": "Ensure the feed renders as a full-width scrollable list on mobile with proper touch target heights (min 44px per item). Add responsive padding and ensure no horizontal overflow."
+        },
+        {
+          "path": "frontend/src/components/AlertsPanel.tsx",
+          "operation": "modify",
+          "description": "Ensure alerts render as full-width cards on mobile with minimum 44px touch targets for dismiss buttons. Add responsive spacing and prevent horizontal overflow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Redesign Login page as mobile app splash screen",
+      "acceptanceCriteria": [
+        "The Login page fills the full viewport height",
+        "The logo and app name are vertically centered",
+        "A short tagline is visible below the app name",
+        "The Sign In button spans nearly full width (max ~320px) and is positioned in the lower portion of the screen",
+        "The dark cybersecurity theme is preserved on the login screen"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Login.tsx",
+          "operation": "modify",
+          "description": "Redesign the Login page to resemble a mobile app splash screen: use full viewport height (min-h-screen), vertically center the NetGuard logo (frontend/public/assets/generated/netguard-logo.dim_256x256.png) and app name using flexbox, add a short cybersecurity-themed tagline below the name, and position the 'Sign In with Internet Identity' button as a prominent full-width (max-w-xs) call-to-action in the lower portion of the screen. Maintain the dark cybersecurity theme and ensure the button is minimum 44px tall."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-redesign-the-frontend-layout-and-navigation-to-be-mobile-first-and-app-like-replace-the-sticky-top-navigation-bar-with-a-bottom-tab-bar-dashboard-analysis-history-alerts-use-full-viewport-height-pages-with-no-horizontal-overflow-and-ensure-all-touch-targets-are-at-least-44px-tall-for-comfortable-tap-interaction",
+      "featureTitle": "Redesign the frontend layout and navigation to be mobile-first and app-like: replace the sticky top navigation bar with a bottom tab bar (Dashboard, Analysis, History, Alerts), use full-viewport-height pages with no horizontal overflow, and ensure all touch targets are at least 44px tall for comfortable tap interaction.",
+      "files": [
+        "frontend/src/components/BottomTabBar.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-dashboard-traffic-analysis-detection-history-and-alerts-pages-to-use-a-card-stacked-single-column-mobile-layout-remove-multi-column-grid-layouts-and-replace-them-with-vertically-stacked-full-width-cards-add-a-sticky-page-header-with-the-current-page-title-and-a-user-avatar-logout-icon-in-the-top-right-corner",
+      "featureTitle": "Update the Dashboard, Traffic Analysis, Detection History, and Alerts pages to use a card-stacked, single-column mobile layout. Remove multi-column grid layouts and replace them with vertically stacked full-width cards. Add a sticky page header with the current page title and a user avatar/logout icon in the top-right corner.",
+      "files": [
+        "frontend/src/components/AlertsPanel.tsx",
+        "frontend/src/components/DetectionHistoryTable.tsx",
+        "frontend/src/components/MobilePageHeader.tsx",
+        "frontend/src/components/RecentEventsFeed.tsx",
+        "frontend/src/components/StatisticsCards.tsx",
+        "frontend/src/components/TrafficInputForm.tsx",
+        "frontend/src/pages/Alerts.tsx",
+        "frontend/src/pages/Dashboard.tsx",
+        "frontend/src/pages/DetectionHistory.tsx",
+        "frontend/src/pages/TrafficAnalysis.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-login-page-to-resemble-a-mobile-app-splash-onboarding-screen-center-the-logo-and-app-name-vertically-in-the-full-viewport-display-a-short-tagline-and-show-the-sign-in-with-internet-identity-button-as-a-prominent-full-width-call-to-action-at-the-bottom-of-the-screen",
+      "featureTitle": "Update the Login page to resemble a mobile app splash/onboarding screen: center the logo and app name vertically in the full viewport, display a short tagline, and show the 'Sign In with Internet Identity' button as a prominent full-width call-to-action at the bottom of the screen.",
+      "files": [
+        "frontend/src/pages/Login.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

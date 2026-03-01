@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Mobile Android application for network intrusion detection using Machine Learning (Java/Android Studio). Uses a Weka-trained ML model to classify network traffic as Normal or Malicious in real-time, with push notifications for threats, attack type/risk level display, detection history logs, and optional secure login. Backend uses SQLite for storage. Dataset: NSL-KDD / KDD Cup 99.",
+  "architectural_notes": [
+    "Platform: Android (Java), IDE: Android Studio",
+    "ML model trained externally using Weka; integrated into app as a model file",
+    "Dataset used for training: NSL-KDD / KDD Cup 99",
+    "Local database: SQLite for detection history and logs",
+    "Real-time traffic classification: Normal or Malicious with attack type and risk level"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-dashboard-home-screen-that-displays-the-current-network-monitoring-status-active-inactive-a-real-time-feed-of-recent-traffic-events-and-summary-statistics-total-scans-threats-detected-normal-traffic-count",
+      "title": "Create a dashboard home screen that displays the current network monitoring status (Active/Inactive), a real-time feed of recent traffic events, and summary statistics (total scans, threats detected, normal traffic count).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-traffic-analysis-input-form-that-accepts-network-traffic-feature-values-e-g-protocol-type-duration-byte-counts-flag-values-based-on-nsl-kdd-features-and-submits-them-to-the-backend-for-classification",
+      "title": "Implement a traffic analysis input form that accepts network traffic feature values (e.g., protocol type, duration, byte counts, flag values based on NSL-KDD features) and submits them to the backend for classification.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-detection-history-page-that-fetches-and-displays-all-past-detection-events-in-a-paginated-filterable-table-allow-filtering-by-classification-type-normal-attack-and-risk-level-include-a-button-to-clear-all-history",
+      "title": "Create a Detection History page that fetches and displays all past detection events in a paginated, filterable table. Allow filtering by classification type (Normal/Attack) and risk level. Include a button to clear all history.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-in-app-alert-notification-system-that-displays-a-prominent-banner-or-modal-whenever-a-malicious-traffic-event-is-detected-the-alert-must-show-the-attack-type-risk-level-and-timestamp-and-persist-in-an-alerts-panel-until-dismissed",
+      "title": "Implement an in-app alert/notification system that displays a prominent banner or modal whenever a malicious traffic event is detected. The alert must show the attack type, risk level, and timestamp, and persist in an Alerts panel until dismissed.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-simple-user-authentication-system-using-internet-identity-so-users-must-log-in-before-accessing-the-detection-dashboard-and-history-show-a-login-screen-with-an-sign-in-with-internet-identity-button-as-the-app-entry-point",
+      "title": "Implement a simple user authentication system using Internet Identity so users must log in before accessing the detection dashboard and history. Show a login screen with an 'Sign In with Internet Identity' button as the app entry point.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-dark-themed-cybersecurity-inspired-visual-design-across-the-entire-application-use-a-dark-navy-charcoal-background-monospace-typography-for-data-values-neon-green-or-amber-accent-colors-for-alerts-and-highlights-and-subtle-grid-or-circuit-pattern-ui-elements-maintain-consistent-styling-for-all-status-badges-risk-level-indicators-color-coded-green-low-yellow-medium-orange-high-red-critical-and-navigation",
+      "title": "Apply a dark-themed, cybersecurity-inspired visual design across the entire application. Use a dark navy/charcoal background, monospace typography for data values, neon green or amber accent colors for alerts and highlights, and subtle grid or circuit-pattern UI elements. Maintain consistent styling for all status badges, risk level indicators (color-coded: green=Low, yellow=Medium, orange=High, red=Critical), and navigation.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-the-frontend-layout-and-navigation-to-be-mobile-first-and-app-like-replace-the-sticky-top-navigation-bar-with-a-bottom-tab-bar-dashboard-analysis-history-alerts-use-full-viewport-height-pages-with-no-horizontal-overflow-and-ensure-all-touch-targets-are-at-least-44px-tall-for-comfortable-tap-interaction",
+      "title": "Redesign the frontend layout and navigation to be mobile-first and app-like: replace the sticky top navigation bar with a bottom tab bar (Dashboard, Analysis, History, Alerts), use full-viewport-height pages with no horizontal overflow, and ensure all touch targets are at least 44px tall for comfortable tap interaction.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-dashboard-traffic-analysis-detection-history-and-alerts-pages-to-use-a-card-stacked-single-column-mobile-layout-remove-multi-column-grid-layouts-and-replace-them-with-vertically-stacked-full-width-cards-add-a-sticky-page-header-with-the-current-page-title-and-a-user-avatar-logout-icon-in-the-top-right-corner",
+      "title": "Update the Dashboard, Traffic Analysis, Detection History, and Alerts pages to use a card-stacked, single-column mobile layout. Remove multi-column grid layouts and replace them with vertically stacked full-width cards. Add a sticky page header with the current page title and a user avatar/logout icon in the top-right corner.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-login-page-to-resemble-a-mobile-app-splash-onboarding-screen-center-the-logo-and-app-name-vertically-in-the-full-viewport-display-a-short-tagline-and-show-the-sign-in-with-internet-identity-button-as-a-prominent-full-width-call-to-action-at-the-bottom-of-the-screen",
+      "title": "Update the Login page to resemble a mobile app splash/onboarding screen: center the logo and app name vertically in the full viewport, display a short tagline, and show the 'Sign In with Internet Identity' button as a prominent full-width call-to-action at the bottom of the screen.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "User Interface Module - user-friendly mobile interface",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Data Collection Module - collect network traffic data",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Data Preprocessing Module - preprocess traffic data for ML analysis",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Machine Learning Model Module - integrate Weka-trained model for traffic classification (Normal/Attack)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Intrusion Detection Module - real-time detection and classification of attacks with risk level",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Alert & Notification Module - push notifications for detected threats",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Database Management Module - SQLite storage for detection history logs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Secure login for user access (optional)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Implement backend logic to receive network traffic feature data, apply a rule-based classification model simulating ML output (classifying traffic as Normal, DoS, Probe, R2L, or U2R attack types with an associated risk level), and return the classification result.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement persistent detection history storage on the backend. Each detection event should store the timestamp, input feature summary, classification result, attack type, and risk level. Expose functions to retrieve the full history and to clear history.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Network Intrusion Detection App",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
